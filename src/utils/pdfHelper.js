@@ -1,8 +1,21 @@
 import * as pdfjsLib from 'pdfjs-dist';
 import { PDFDocument, PDFName, PDFArray, PDFString, rgb } from 'pdf-lib';
 
+// Helper to resolve static assets absolute URL based on the Vite base path
+const getBaseAssetUrl = (filename) => {
+  const base = import.meta.env.BASE_URL || '/';
+  let resolvedBase = base;
+  if (base.startsWith('.')) {
+    const pathname = window.location.pathname;
+    const dir = pathname.substring(0, pathname.lastIndexOf('/') + 1);
+    resolvedBase = dir + base.slice(1);
+  }
+  resolvedBase = resolvedBase.replace(/\/+/g, '/');
+  return new URL(resolvedBase + filename, window.location.origin).toString();
+};
+
 // Configure PDF.js worker using local static asset (copied from pdfjs-dist build)
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = getBaseAssetUrl('pdf.worker.min.mjs');
 
 /**
  * Loads a PDF document using PDF.js.
