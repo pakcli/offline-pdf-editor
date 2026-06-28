@@ -46,7 +46,7 @@ const dictionary = {
     appDesc: "Privacy guaranteed. Your files are processed entirely inside your browser cache and are never uploaded to any server.",
     tool_merge: "🔀 Merge PDFs",
     tool_reorder: "📋 Reorder",
-    tool_extract_pages: "✂️ Extract Pages",
+    tool_extract_pages: "✂️ Extract Pages ",
     tool_link: "🔗 Link Area",
     tool_stamp: "🖼️ PNG Stamp",
     tool_text: "🔤 Add Text",
@@ -1043,11 +1043,10 @@ function ExtractPageThumbnail({ index, pdfDoc, renderTrigger, isSelected, onTogg
   return (
     <div
       onClick={onToggle}
-      className={`bg-gray-900 border rounded-lg p-1 flex flex-col items-center justify-center cursor-pointer transition-all duration-250 group relative ${
-        isSelected
+      className={`bg-gray-900 border rounded-lg p-1 flex flex-col items-center justify-center cursor-pointer transition-all duration-250 group relative ${isSelected
           ? 'border-purple-500 ring-2 ring-purple-500/30'
           : 'border-gray-800 hover:border-gray-700'
-      }`}
+        }`}
     >
       <div className="relative overflow-hidden rounded bg-white shadow-lg w-full flex items-center justify-center">
         <canvas ref={canvasRef} className="w-full h-auto object-contain block" />
@@ -1059,9 +1058,8 @@ function ExtractPageThumbnail({ index, pdfDoc, renderTrigger, isSelected, onTogg
           </div>
         )}
       </div>
-      <span className={`text-base font-semibold mt-1.5 transition-colors ${
-        isSelected ? 'text-purple-400 font-bold' : 'text-gray-300 group-hover:text-gray-200'
-      }`}>
+      <span className={`text-base font-semibold mt-1.5 transition-colors ${isSelected ? 'text-purple-400 font-bold' : 'text-gray-300 group-hover:text-gray-200'
+        }`}>
         {pageWord} {index + 1}
       </span>
     </div>
@@ -1089,7 +1087,7 @@ function SortableFileItem({ id, file, onRemove, cols }) {
       >
         {/* Drag handle area */}
         <div className="absolute inset-0 cursor-move" {...attributes} {...listeners} />
-        
+
         {/* File icon */}
         <div className="relative z-10 w-10 h-10 bg-purple-500/10 border border-purple-500/20 text-purple-400 rounded-lg flex items-center justify-center text-lg mb-2 pointer-events-none">
           📄
@@ -1607,7 +1605,7 @@ export default function App() {
     const ranges = [];
     let start = sorted[0];
     let end = sorted[0];
-    
+
     for (let i = 1; i < sorted.length; i++) {
       if (sorted[i] === end + 1) {
         end = sorted[i];
@@ -2515,8 +2513,8 @@ export default function App() {
                         setLangOpen(false);
                       }}
                       className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-left text-xs font-semibold cursor-pointer transition-all ${currentLanguage === lang.code
-                          ? 'bg-purple-600/10 text-purple-400 border border-purple-500/20'
-                          : 'text-gray-400 hover:bg-gray-900/40 border border-transparent'
+                        ? 'bg-purple-600/10 text-purple-400 border border-purple-500/20'
+                        : 'text-gray-400 hover:bg-gray-900/40 border border-transparent'
                         }`}
                     >
                       <span className="text-sm shrink-0 flex items-center justify-start gap-1 w-9">
@@ -2621,11 +2619,10 @@ export default function App() {
                           key={num}
                           type="button"
                           onClick={() => setWorkspaceCols(num)}
-                          className={`px-2.5 py-0.5 text-[10px] font-bold rounded cursor-pointer transition-all ${
-                            workspaceCols === num
+                          className={`px-2.5 py-0.5 text-[10px] font-bold rounded cursor-pointer transition-all ${workspaceCols === num
                               ? 'bg-purple-600 text-white shadow'
                               : 'text-gray-400 hover:text-gray-250'
-                          }`}
+                            }`}
                         >
                           {num === 1 ? '1' : num}
                         </button>
@@ -2794,11 +2791,10 @@ export default function App() {
                               key={num}
                               type="button"
                               onClick={() => setWorkspaceCols(num)}
-                              className={`px-2.5 py-0.5 text-[10px] font-bold rounded cursor-pointer transition-all ${
-                                workspaceCols === num
+                              className={`px-2.5 py-0.5 text-[10px] font-bold rounded cursor-pointer transition-all ${workspaceCols === num
                                   ? 'bg-purple-600 text-white shadow'
                                   : 'text-gray-400 hover:text-gray-250'
-                              }`}
+                                }`}
                             >
                               {num === 1 ? '1' : num}
                             </button>
@@ -2857,11 +2853,10 @@ export default function App() {
                               key={num}
                               type="button"
                               onClick={() => setWorkspaceCols(num)}
-                              className={`px-2.5 py-0.5 text-[10px] font-bold rounded cursor-pointer transition-all ${
-                                workspaceCols === num
+                              className={`px-2.5 py-0.5 text-[10px] font-bold rounded cursor-pointer transition-all ${workspaceCols === num
                                   ? 'bg-purple-600 text-white shadow'
                                   : 'text-gray-400 hover:text-gray-250'
-                              }`}
+                                }`}
                             >
                               {num === 1 ? '1' : num}
                             </button>
@@ -2916,11 +2911,10 @@ export default function App() {
                               key={num}
                               type="button"
                               onClick={() => setWorkspaceCols(num)}
-                              className={`px-2.5 py-0.5 text-[10px] font-bold rounded cursor-pointer transition-all ${
-                                workspaceCols === num
+                              className={`px-2.5 py-0.5 text-[10px] font-bold rounded cursor-pointer transition-all ${workspaceCols === num
                                   ? 'bg-purple-600 text-white shadow'
                                   : 'text-gray-400 hover:text-gray-250'
-                              }`}
+                                }`}
                             >
                               {num === 1 ? '1' : num}
                             </button>
