@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/client-side-pdf-editor/',
+  base: '/offline-pdf-editor/',
   plugins: [
     react(),
     tailwindcss(),
