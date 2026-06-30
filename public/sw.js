@@ -28,12 +28,15 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(event.request.url);
 
-  // Skip browser extensions or other origins (except basic files, CDNs, and flag assets)
+  // Skip browser extensions or other origins (except basic files, CDNs, and assets)
   if (
     url.origin !== self.location.origin &&
     !url.origin.includes('cdnjs') &&
     !url.origin.includes('unpkg') &&
-    !url.origin.includes('flagcdn.com')
+    !url.origin.includes('flagcdn.com') &&
+    !url.origin.includes('flaticon.com') &&
+    !url.origin.includes('googleapis.com') &&
+    !url.origin.includes('gstatic.com')
   ) {
     return;
   }
@@ -43,7 +46,7 @@ self.addEventListener('fetch', (event) => {
       if (cachedResponse) {
         // Return cached asset, but fetch in background to update cache (stale-while-revalidate)
         fetch(event.request).then((networkResponse) => {
-          if (networkResponse.status === 200) {
+          if (networkResponse.status === 200 || networkResponse.status === 0) {
             caches.open(CACHE_NAME).then((cache) => cache.put(event.request, networkResponse));
           }
         }).catch(() => {}); // ignore network errors
@@ -51,7 +54,7 @@ self.addEventListener('fetch', (event) => {
       }
 
       return fetch(event.request).then((networkResponse) => {
-        if (!networkResponse || networkResponse.status !== 200) {
+        if (!networkResponse || (networkResponse.status !== 200 && networkResponse.status !== 0)) {
           return networkResponse;
         }
 
